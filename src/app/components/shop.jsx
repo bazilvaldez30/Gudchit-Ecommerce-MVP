@@ -1,10 +1,9 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import SectionContainer from './section-container'
 import DispensaryCard from './dispensary-card'
 import Cookies from 'js-cookie'
-import Products from './products'
+import ShopMainContent from './shop-main-content'
 
 export default function Shop({ dispensary }) {
   const [selectedDispensary, setSelectedDispensary] = useState(null)
@@ -12,8 +11,6 @@ export default function Shop({ dispensary }) {
 
   useEffect(() => {
     const fetchData = async () => {
-      // Simulating an API call delay
-
       setSelectedDispensary(Cookies.get('dispensary'))
       setLoading(false)
     }
@@ -29,19 +26,21 @@ export default function Shop({ dispensary }) {
           <p>Loading...</p>
         </div>
       ) : selectedDispensary ? (
-        <Products />
+        <ShopMainContent
+          setLoading={setLoading}
+          selectedDispensary={selectedDispensary}
+        />
       ) : (
-        
-          <div className='flex justify-center flex-wrap gap-4'>
-            {dispensary.map((item) => (
+        <div className='flex justify-center flex-wrap gap-4'>
+          {dispensary &&
+            dispensary?.map((item) => (
               <DispensaryCard
                 item={item}
                 key={item.name}
                 setLoading={setLoading}
               />
             ))}
-          </div>
-        
+        </div>
       )}
     </div>
   )

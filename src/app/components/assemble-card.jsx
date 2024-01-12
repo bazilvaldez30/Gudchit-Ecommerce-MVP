@@ -23,9 +23,9 @@ export default function AssembleCard({ items }) {
         {items?.map((item, index) => (
           <ItemCard
             setSelectedItem={setSelectedItem}
-            key={index}
             item={item}
             openModal={openModal}
+            index={index}
           />
         ))}
       </div>

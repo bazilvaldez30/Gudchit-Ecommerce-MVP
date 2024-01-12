@@ -10,6 +10,7 @@ const MyModal = ({ selectedItem, modalIsOpen, closeModal }) => {
     <Modal
       isOpen={modalIsOpen}
       onRequestClose={closeModal}
+      ariaHideApp={false}
       className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 dark:bg-gray-900 bg-white rounded shadow-md w-full max-w-4xl dark:text-white p-9 scale-90'
       /*  overlayClassName='fixed inset-0 bg-gray-800' */
     >

@@ -21,7 +21,7 @@ export default function Header() {
         animate={{ y: 0, x: '-50%', opacity: 1 }}
       ></motion.div>
 
-      <nav className='flex fixed top-[0.6rem] left-1/2 h-12 -translate-x-1/2 py-2 md:top-[0.7rem] sm:h-[initial] sm:py-0 w-full lg:max-w-6xl md:max-w-3xl mx-auto justify-between md:px-0 px-12'>
+      <nav className='flex fixed top-[0.6rem] left-1/2 h-12 -translate-x-1/2 py-2 md:top-[0.7rem] sm:h-[initial] sm:py-0 w-full lg:max-w-7xl md:max-w-4xl mx-auto justify-between md:px-0 px-12'>
         <motion.h1
           initial={{ y: -100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
