@@ -2,43 +2,69 @@ import React, { useEffect, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { useFetchProducts } from '../hooks/useFetchProducts'
 import ProductCard from './product-card'
+import { useSearchParams } from 'next/navigation'
 
 export default function Products({ selectedDispensary }) {
   const [nextProducts, setNextProducts] = useState(0)
   const [isReachLastItem, setIsReachLastItem] = useState(false)
   const [ref, inView] = useInView()
   const [data, setData] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
+  const searchParams = useSearchParams()
+  const [selectedBrands, setSelectedBrands] = useState([])
 
   useEffect(() => {
+    setIsLoading(true)
     if (inView) {
       const fetchProducts = async () => {
         const fetchProducts = await useFetchProducts(
           12,
           selectedDispensary,
-          nextProducts
+          nextProducts,
+          selectedBrands
         )
 
         setData((prev) => [...prev, ...fetchProducts])
-        if (!fetchProducts.length) {
+        if (!fetchProducts.length || fetchProducts.length < 12) {
           setIsReachLastItem(true)
         }
       }
       setNextProducts(nextProducts + 12)
       fetchProducts()
     }
+    setIsLoading(false)
   }, [inView])
+
+  useEffect(() => {
+    const params = searchParams.get('brands')
+
+    // Check if params is not null or undefined
+    if (params) {
+      // Split the comma-separated string into an array
+      const brandsArray = params.split(',')
+
+      // Trim each brand to remove any leading/trailing whitespaces
+      const trimmedBrandsArray = brandsArray.map((brand) => brand.trim())
+
+      // Set the array as selectedBrands
+      setSelectedBrands(trimmedBrandsArray)
+    } else {
+      // If params is null or undefined, set an empty array
+      setSelectedBrands([])
+    }
+  }, [])
 
   return (
     <section>
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10'>
         {data?.map((item, index) => (
           <React.Fragment key={index}>
-            <ProductCard item={item} />
+            <ProductCard item={item} index={index} />
           </React.Fragment>
         ))}
       </div>
-      {!isReachLastItem && (
-        <div className='text-center py-5' ref={ref}>
+      {!isReachLastItem && !isLoading && (
+        <div className='text-center py-28 mb-56' ref={ref}>
           <svg
             aria-hidden='true'
             className='inline w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600'
