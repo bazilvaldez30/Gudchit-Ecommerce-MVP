@@ -22,7 +22,7 @@ export default function ProductCard({ item, index }) {
       }}
       viewport={{ amount: 0 }}
     >
-      <Link href={''}>
+      <Link href={'/product/test'}>
         <p className='text-[10px] absolute top-2 left-2 dark:bg-gray-800 bg-gray-200 dark:text-white rounded-full p-1 px-3 text-gray-950 tracking-wider'>
           {item.strainType}
         </p>
@@ -39,8 +39,9 @@ export default function ProductCard({ item, index }) {
         <button className='dark:bg-blue-900 bg-blue-500 text-white w-full mb-5 py-2 rounded-md hover:scale-[1.05] hover:bg-blue-600 dark:hover:bg-blue-800'>
           ADD TO CART
         </button>
-        <button className=' bg-gray-500 dark:bg-gray-700 hover:dark:bg-gray-600 text-white mb-5 py-2 px-3 rounded-md hover:scale-[1.15] hover:bg-gray-600'>
-          <FaEye />
+
+        <button className=' bg-gray-200 dark:bg-gray-700 hover:dark:bg-gray-600 text-white mb-5 py-2 px-3 rounded-md hover:scale-[1.15] hover:bg-gray-300'>
+          <FaEye className='text-gray-950 dark:text-white' />
         </button>
       </div>
     </motion.div>

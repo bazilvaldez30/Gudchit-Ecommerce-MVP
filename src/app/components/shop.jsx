@@ -20,12 +20,7 @@ export default function Shop({ dispensary }) {
 
   return (
     <div>
-      {loading ? (
-        // Display loading message in the middle of the screen
-        <div className='flex items-center justify-center h-screen'>
-          <p>Loading...</p>
-        </div>
-      ) : selectedDispensary ? (
+      {selectedDispensary ? (
         <ShopMainContent
           setLoading={setLoading}
           selectedDispensary={selectedDispensary}
