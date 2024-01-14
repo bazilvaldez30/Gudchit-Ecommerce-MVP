@@ -1,10 +1,8 @@
-'use client'
-
 import React from 'react'
 import Link from 'next/link'
 import { FaTag, FaShop } from 'react-icons/fa6'
 import { FaShoppingCart, FaCartPlus } from 'react-icons/fa'
-import { motion } from 'framer-motion'
+import { MotionDiv } from './motion-div'
 
 export default function SingleProduct({ product }) {
   const containerVariants = {
@@ -27,8 +25,8 @@ export default function SingleProduct({ product }) {
   }
 
   return (
-    <section>
-      <motion.div
+    <section className='px-5 md:px-0'>
+      <MotionDiv
         className='mb-6 flex gap-3'
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -45,18 +43,21 @@ export default function SingleProduct({ product }) {
         >
           <FaShoppingCart /> My Cart
         </Link>
-      </motion.div>
-      <motion.div
-        className='grid grid-cols-10'
+      </MotionDiv>
+      <MotionDiv
+        className='grid grid-cols-10 gap-9'
         variants={containerVariants}
         initial='hidden'
         animate='visible'
       >
-        <motion.div className='col-span-4' variants={imageVariants}>
+        <MotionDiv
+          className='lg:col-span-4 col-span-10'
+          variants={imageVariants}
+        >
           <img src={product[0].image} alt='' />
-        </motion.div>
-        <motion.div
-          className='col-span-6 px-7 space-y-3'
+        </MotionDiv>
+        <MotionDiv
+          className='lg:col-span-6 col-span-10 space-y-3'
           variants={textVariants}
         >
           <h1 className='text-4xl font-bold'>{product[0].title}</h1>
@@ -87,8 +88,8 @@ export default function SingleProduct({ product }) {
               ADD TO CART
             </button>
           </div>
-        </motion.div>
-      </motion.div>
+        </MotionDiv>
+      </MotionDiv>
     </section>
   )
 }
