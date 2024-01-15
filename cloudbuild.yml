@@ -1,7 +1,7 @@
 substitutions:
   _MY_TAG: latest
   _PROJECT: dispenza-408104
-  _SERVICE_NAME: demo-shop
+  _SERVICE_NAME: dutchie-demo-shop
 steps:
   - name: "gcr.io/cloud-builders/docker"
     args:
