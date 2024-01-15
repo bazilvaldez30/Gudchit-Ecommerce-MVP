@@ -21,12 +21,13 @@ export default function AssembleCard({ items }) {
     <React.Fragment>
       <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4'>
         {items?.map((item, index) => (
-          <ItemCard
-            setSelectedItem={setSelectedItem}
-            item={item}
-            openModal={openModal}
-            index={index}
-          />
+          <React.Fragment key={index}>
+            <ItemCard
+              setSelectedItem={setSelectedItem}
+              item={item}
+              openModal={openModal}
+            />
+          </React.Fragment>
         ))}
       </div>
       {selectedItem && (

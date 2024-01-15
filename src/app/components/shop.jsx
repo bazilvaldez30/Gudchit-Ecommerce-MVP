@@ -27,14 +27,11 @@ export default function Shop({ dispensary }) {
         />
       ) : (
         <div className='flex justify-center flex-wrap gap-4'>
-          {dispensary &&
-            dispensary?.map((item) => (
-              <DispensaryCard
-                item={item}
-                key={item.name}
-                setLoading={setLoading}
-              />
-            ))}
+          {dispensary?.map((item) => (
+            <React.Fragment key={item.name}>
+              <DispensaryCard item={item} setLoading={setLoading} />
+            </React.Fragment>
+          ))}
         </div>
       )}
     </div>
