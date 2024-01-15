@@ -3,7 +3,7 @@ import SectionContainer from '@/app/components/section-container'
 import { useFetchSingleProduct } from '@/app/hooks/useFetchSingleProduct'
 import SingleProduct from '@/app/components/single-product'
 
-export default async function page({ params }) {
+export default async function Page({ params }) {
   const productName = params.productName
 
   const product = await useFetchSingleProduct()

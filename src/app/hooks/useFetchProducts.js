@@ -1,5 +1,6 @@
 'use server'
 
+import { brands } from '../../../lib/data'
 import api from '../api/api'
 
 export const useFetchProducts = async (
@@ -9,10 +10,14 @@ export const useFetchProducts = async (
   brandsFilter
 ) => {
   try {
+    if (brandsFilter.length === 0) brandsFilter = brands
+    console.log('brands', brands)
     const response = await api.post('/graphql/', {
       query: `
               query MyQuery {
-                allProducts(first: ${itemsToFetched},after: ${
+                allProducts(brandNames: ${
+                  JSON.stringify(brandsFilter) || brands
+                },first: ${itemsToFetched},after: ${
         loadNext || 0
       }, retailerId: ${selectedDispensary}) {
                   id

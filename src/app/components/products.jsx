@@ -3,6 +3,7 @@ import { useInView } from 'react-intersection-observer'
 import { useFetchProducts } from '../hooks/useFetchProducts'
 import ProductCard from './product-card'
 import { useSearchParams } from 'next/navigation'
+import { useQueryState } from 'nuqs'
 
 export default function Products({ selectedDispensary }) {
   const [nextProducts, setNextProducts] = useState(0)
@@ -16,7 +17,7 @@ export default function Products({ selectedDispensary }) {
   useEffect(() => {
     setIsLoading(true)
     if (inView) {
-      const fetchProducts = async () => {
+      const FetchProducts = async () => {
         const fetchProducts = await useFetchProducts(
           12,
           selectedDispensary,
@@ -30,7 +31,7 @@ export default function Products({ selectedDispensary }) {
         }
       }
       setNextProducts(nextProducts + 12)
-      fetchProducts()
+      FetchProducts()
     }
     setIsLoading(false)
   }, [inView])
