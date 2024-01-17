@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
-import { useFetchProducts } from '../hooks/useFetchProducts'
+import { fetchProducts } from '../hooks/useFetchProducts'
 import ProductCard from './product-card'
 import { useSearchParams } from 'next/navigation'
 import { useQueryState } from 'nuqs'
@@ -14,20 +14,20 @@ export default function Products({ selectedDispensary }) {
 
   useEffect(() => {
     setIsReachLastItem(true)
-    const fetchData = async () => {
+    const FetchData = async () => {
       try {
         setIsLoading(true)
 
-        const fetchProducts = await useFetchProducts(
+        const fetchedProducts = await fetchProducts(
           12,
           selectedDispensary,
           0,
           brandsFilter
         )
 
-        setData(fetchProducts)
-        
-        if (!fetchProducts.length || fetchProducts.length < 12) {
+        setData(fetchedProducts)
+
+        if (!fetchedProducts.length || fetchedProducts.length < 12) {
           setIsReachLastItem(true)
         } else {
           setIsReachLastItem(false)
@@ -39,8 +39,8 @@ export default function Products({ selectedDispensary }) {
         setIsLoading(false)
       }
     }
-    
-    fetchData()
+
+    FetchData()
   }, [brandsFilter])
 
   return (

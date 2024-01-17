@@ -14,7 +14,7 @@ export default async function page() {
       const response = await api.post('/graphql/', {
         query: 'query MyQuery {allRetailers {id name address}}',
       })
-      console.log(response.data.data.allRetailers)
+
       return response.data.data.allRetailers
     } catch (error) {
       console.error(error)

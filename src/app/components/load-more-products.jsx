@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
-import { useFetchProducts } from '../hooks/useFetchProducts'
+import { fetchProducts } from '../hooks/useFetchProducts'
 
 export default function LoadMoreProducts({
   selectedDispensary,
@@ -12,25 +12,23 @@ export default function LoadMoreProducts({
   const [ref, inView] = useInView()
 
   useEffect(() => {
-    /*  setIsLoading(true) */
     if (inView) {
-      const FetchProducts = async () => {
-        const fetchProducts = await useFetchProducts(
+      const fetchData = async () => {
+        const fetchedProducts = await fetchProducts(
           12,
           selectedDispensary,
           nextProducts,
           brandsFilter
         )
 
-        setData((prev) => [...prev, ...fetchProducts])
-        if (!fetchProducts.length || fetchProducts.length < 12) {
+        setData((prev) => [...prev, ...fetchedProducts])
+        if (!fetchedProducts.length || fetchedProducts.length < 12) {
           setIsReachLastItem(true)
         }
       }
       setNextProducts(nextProducts + 12)
-      FetchProducts()
+      fetchData()
     }
-    /*  setIsLoading(false) */
   }, [inView])
 
   return (
