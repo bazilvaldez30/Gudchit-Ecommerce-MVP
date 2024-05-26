@@ -27,7 +27,7 @@ export default function Header() {
           animate={{ y: 0, opacity: 1 }}
           className='lg:text-5xl md:text-4xl text-3xl font-extrabold'
         >
-          <Link href={'/'}>SGEN</Link>
+          <Link href={'/'}>Gudchit</Link>
         </motion.h1>
         <ul className='flex w-[22rem] flex-wrap items-center justify-end gap-y-1 text-[0.9rem] font-medium text-gray-500 sm:w-[initial] sm:flex-nowrap sm:gap-5'>
           {links.map((link) => (

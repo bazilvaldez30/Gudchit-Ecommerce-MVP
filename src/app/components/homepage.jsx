@@ -9,7 +9,7 @@ export default async function HomePage() {
     try {
       const response = await api.post('/graphql/', {
         query:
-          'query MyQuery {allSpecials(retailerId: 1) {name id image description endDate startDate type menuType}}',
+          'query MyQuery {allSpecials {name id image description endDate startDate type menuType}}',
       })
       console.log(response.data.data.allSpecials)
       return response.data.data.allSpecials
@@ -23,7 +23,7 @@ export default async function HomePage() {
   return (
     <SectionContainer>
       <div className='md:px-0 px-12'>
-        <SectionHeading>Dispenza - Dutchie Plus Sandbox 1</SectionHeading>
+        <SectionHeading>Gudchit - Sandbox 1</SectionHeading>
         <AssembleCard items={specials} />
       </div>
     </SectionContainer>

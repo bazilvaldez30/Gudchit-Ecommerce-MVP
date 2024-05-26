@@ -2,7 +2,8 @@ import axios from 'axios'
 import Cookies from 'js-cookie'
 import { useRouter } from 'next/navigation'
 
-const backend_url = 'https://dutchie-cron-app-bgxd2bvflq-uw.a.run.app'
+const backend_url =
+  'https://dutchie-integrations-v3-bgxd2bvflq-uw.a.run.app/117'
 
 // const backend_url = 'https://api.vsona.ai'
 

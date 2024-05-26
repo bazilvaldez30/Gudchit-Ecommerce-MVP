@@ -16,9 +16,7 @@ export const fetchProducts = async (
               query MyQuery {
                 allProducts(brandNames: ${
                   JSON.stringify(brandsFilter) || brands
-                },first: ${itemsToFetched},after: ${
-        loadNext || 0
-      }, retailerId: ${selectedDispensary}) {
+                },first: ${itemsToFetched},after: ${loadNext || 0}) {
                   id
                   created
                   image
