@@ -6,17 +6,28 @@ import Cookies from 'js-cookie'
 import ShopMainContent from './shop-main-content'
 
 export default function Shop({ dispensary }) {
-  const [selectedDispensary, setSelectedDispensary] = useState(null)
+  const [selectedDispensary, setSelectedDispensary] = useState([
+    {
+      id: '1',
+      name: 'Gudchit - Sandbox 1',
+      location: 'Las Vegas, NV, USA',
+    },
+    {
+      id: '2',
+      name: 'Gudchit - Sandbox 2',
+      location: 'Las Vegas, NV, USA',
+    },
+  ])
   const [loading, setLoading] = useState(true)
 
-  useEffect(() => {
+  /* useEffect(() => {
     const fetchData = async () => {
       setSelectedDispensary(Cookies.get('dispensary'))
       setLoading(false)
     }
 
     fetchData()
-  }, [loading])
+  }, [loading]) */
 
   return (
     <div>
