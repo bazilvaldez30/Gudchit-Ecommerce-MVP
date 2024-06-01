@@ -11,7 +11,7 @@ export default function ProductsContent({ selectedDispensary }) {
         animate={{ y: 0, opacity: 1 }}
         className='text-4xl font-bold dark:text-white text-gray-950'
       >
-        Dispenza - Dutchie Plus Sandbox 2
+        Gudchit - Sandbox 1
       </motion.h1>
       <div className='px-2'>
         <Products selectedDispensary={selectedDispensary} />
